@@ -14,6 +14,13 @@ func start(pos):
     position = pos
     show()
     $CollisionShape2D.disabled = false
+    
+func eat():
+    $CollisionShape2D.scale.x += 0.02
+    $CollisionShape2D.scale.y += 0.02
+    $AnimatedSprite.scale.x += 0.02
+    $AnimatedSprite.scale.y += 0.02
+    pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -11,6 +11,7 @@ func _process(delta):
 
 func _on_Player_collision(body):
     body.queue_free()
+    $Player.eat()
     pass
 
 func _on_StartTimer_timeout():
