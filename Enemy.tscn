@@ -6,16 +6,16 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D"]
 position = Vector2( 96, 96 )
 collision_layer = 2
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="Visibility" type="VisibilityNotifier2D" parent="."]
+[connection signal="screen_exited" from="Visibility" to="." method="_on_Visibility_screen_exited"]

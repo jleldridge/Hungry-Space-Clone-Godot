@@ -5,8 +5,15 @@ const MAX_SPEED = 500
 const ACCELERATION = 15
 const FRICTION = 5
 
+signal collision(body)
+
 var screen_size
 var movement = Vector2()
+
+func start(pos):
+    position = pos
+    show()
+    $CollisionShape2D.disabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,9 +38,9 @@ func _process(delta):
     
     position.x = clamp(position.x, 0, screen_size.x)
     position.y = clamp(position.y, 0, screen_size.y)
-    
-#    var collision = move_and_collide(motion * delta);
-#    if collision:
-#        if collision.collider.get_filename() == ENEMY.get_path():
-#            collision.collider.queue_free()
-#            pass
+
+func _on_Player_body_entered(body):
+    emit_signal("collision", body)
+    #this would be how we could prevent further collisions
+    #Disabling the area’s collision shape can cause an error if it happens in the middle of the engine’s collision processing. Using set_deferred() allows us to have Godot wait to disable the shape until it’s safe to do so.
+#    $CollisionShape2D.set_deferred("disabled", true)
