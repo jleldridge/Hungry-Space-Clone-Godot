@@ -10,8 +10,14 @@ func _process(delta):
 
 
 func _on_Player_collision(body):
-    body.queue_free()
-    $Player.eat()
+    print(body.size)
+    if body.size > $Player.size:
+        print("bigger")
+        pass
+    else:
+        print("smaller")
+        body.queue_free()
+        $Player.eat()
     pass
 
 func _on_StartTimer_timeout():

@@ -9,6 +9,7 @@ signal collision(body)
 
 var screen_size
 var movement = Vector2()
+var size = 10
 
 func start(pos):
     position = pos
@@ -16,15 +17,22 @@ func start(pos):
     $CollisionShape2D.disabled = false
     
 func eat():
-    $CollisionShape2D.scale.x += 0.02
-    $CollisionShape2D.scale.y += 0.02
-    $AnimatedSprite.scale.x += 0.02
-    $AnimatedSprite.scale.y += 0.02
-    pass
+    size += 1
+    _scaleSize()
+    
+func _scaleSize():
+    var computedSize = 0.5 + 0.02 * size
+    $CollisionShape2D.scale.x = computedSize
+    $CollisionShape2D.scale.y = computedSize
+    $AnimatedSprite.scale.x = computedSize
+    $AnimatedSprite.scale.y = computedSize
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     screen_size = get_viewport_rect().size
+    var computedSize = 0.5 + 0.02 * size
+    _scaleSize()
+    
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
