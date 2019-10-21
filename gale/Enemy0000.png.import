@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedCircle.png-450a7a137ac181c6e8c3d9ad62f57a80.stex"
+path="res://.import/Enemy0000.png-5003964be7774c3962763635a3e1ca82.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RedCircle.png"
-dest_files=[ "res://.import/RedCircle.png-450a7a137ac181c6e8c3d9ad62f57a80.stex" ]
+source_file="res://gale/Enemy0000.png"
+dest_files=[ "res://.import/Enemy0000.png-5003964be7774c3962763635a3e1ca82.stex" ]
 
 [params]
 

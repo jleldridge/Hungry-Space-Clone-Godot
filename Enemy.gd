@@ -15,7 +15,7 @@ func _ready():
     _scaleSize()
     
 func _scaleSize():
-    var computedSize = 0.5 + 0.02 * size * 2
+    var computedSize = 0.5 + 0.02 * size
     $CollisionShape2D.scale.x = computedSize
     $CollisionShape2D.scale.y = computedSize
     $Sprite.scale.x = computedSize
