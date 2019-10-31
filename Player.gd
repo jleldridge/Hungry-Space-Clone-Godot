@@ -4,15 +4,19 @@ const ENEMY = preload("res://Enemy.tscn")
 const MAX_SPEED = 500
 const ACCELERATION = 15
 const FRICTION = 5
+const MAX_SIZE = 300
+const MIN_SIZE = 10
 
 signal collision(body)
 
 var screen_size
 var movement = Vector2()
-var size = 10
+var size = MIN_SIZE
 
 func start(pos):
     position = pos
+    size = MIN_SIZE
+    _scaleSize()
     show()
     $CollisionShape2D.disabled = false
     
@@ -30,7 +34,6 @@ func _scaleSize():
 # Called when the node enters the scene tree for the first time.
 func _ready():
     screen_size = get_viewport_rect().size
-    var computedSize = 0.5 + 0.02 * size
     _scaleSize()
     
 

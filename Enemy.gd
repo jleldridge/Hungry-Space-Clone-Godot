@@ -7,11 +7,10 @@ const MAX_SIZE = 250
 
 var speed = Vector2()
 var size
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
+    
+func determine_size(player_size):
     speed.x = -1 * rand_range(MIN_SPEED, MAX_SPEED)
-    size = rand_range(MIN_SIZE, MAX_SIZE)
+    size = rand_range(MIN_SIZE, min(MAX_SIZE, player_size + 50))
     _scaleSize()
     
 func _scaleSize():
