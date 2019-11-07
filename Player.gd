@@ -6,6 +6,7 @@ const ACCELERATION = 15
 const FRICTION = 5
 const MAX_SIZE = 300
 const MIN_SIZE = 10
+const DEFAULT_SPRITE_SCALE = 0.1
 
 signal collision(body)
 
@@ -25,7 +26,7 @@ func eat():
     _scaleSize()
     
 func _scaleSize():
-    var computedSize = 0.5 + 0.02 * size
+    var computedSize = DEFAULT_SPRITE_SCALE + 0.02 * size
     $CollisionShape2D.scale.x = computedSize
     $CollisionShape2D.scale.y = computedSize
     $AnimatedSprite.scale.x = computedSize
@@ -34,6 +35,7 @@ func _scaleSize():
 # Called when the node enters the scene tree for the first time.
 func _ready():
     screen_size = get_viewport_rect().size
+    $AnimatedSprite.play()
     _scaleSize()
     
 
@@ -46,11 +48,11 @@ func _process(delta):
         movement.x = 0
         movement.y = 0
     
-    var angle = movement.angle()        
+    var angle = movement.angle()  
     if movement.length() > 5:
         position += movement.normalized() * delta * MAX_SPEED
-        $AnimatedSprite.rotation = angle
-        $AnimatedSprite.animation = "left"
+#        $AnimatedSprite.rotation = angle
+#        $AnimatedSprite.animation = "move"
     else:
         $AnimatedSprite.animation = "default"
     
