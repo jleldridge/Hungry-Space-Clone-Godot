@@ -8,7 +8,6 @@ func _ready():
     $Player.hide()
 
 func _on_Player_collision(body):
-    print("collision detected")
     if game_running:
         if body.size > $Player.size:
             $Player.hide()

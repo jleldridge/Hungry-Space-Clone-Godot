@@ -37,7 +37,6 @@ func _ready():
     screen_size = get_viewport_rect().size
     $AnimatedSprite.play()
     _scaleSize()
-    print("player ready")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -60,7 +59,6 @@ func _process(delta):
     position.y = clamp(position.y, 0, screen_size.y)
 
 func _on_Player_body_entered(body):
-    print("collision detected")
     emit_signal("collision", body)
     #this would be how we could prevent further collisions
     #Disabling the area’s collision shape can cause an error if it happens in the middle of the engine’s collision processing. Using set_deferred() allows us to have Godot wait to disable the shape until it’s safe to do so.
